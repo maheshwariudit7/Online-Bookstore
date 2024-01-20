@@ -23,4 +23,9 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     @Transactional
     @Query("update Book b set b.inCart=false where b.id= :bookId")
     void removeFromCart(Long bookId);
+
+//    @Modifying
+//    @Transactional
+//    @Query("update Book b set")
+//    void updateBook(Book book);
 }

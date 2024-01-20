@@ -44,8 +44,13 @@
             <td th:text="${book.publicationDate}"></td>
             <td th:text="${book.publisher}"></td>
         <td>
+
             <a class="btn btn-primary" sec:authorize="hasRole('ADMIN')"
                    th:href="@{/bookstore/books/{bookId}/view (bookId=${book.id})}">View</a>
+
+            <a class="btn btn-secondary" sec:authorize="hasRole('ADMIN')"
+               th:href="@{/bookstore/books/{bookId}/edit (bookId=${book.id})}">Edit</a>
+
             <a class="btn btn-danger" sec:authorize="hasRole('ADMIN')"
                th:href="@{/bookstore/books/{bookId}/delete (bookId=${book.id})}">Delete</a>
 

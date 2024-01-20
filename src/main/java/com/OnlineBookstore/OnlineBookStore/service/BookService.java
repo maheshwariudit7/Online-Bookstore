@@ -22,4 +22,6 @@ public interface BookService {
     void addBookToCart(Long bookId);
 
     void removeBookFromCart(Long bookId);
+
+    void updateBook(Book book);
 }

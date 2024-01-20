@@ -72,5 +72,10 @@ public class BookServiceImpl implements BookService {
         bookRepository.removeFromCart(bookId);
     }
 
+    @Override
+    public void updateBook(Book book) {
+        bookRepository.save(book);
+    }
+
 
 }

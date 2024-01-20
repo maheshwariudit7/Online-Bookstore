@@ -55,7 +55,9 @@ public class SecurityConfig {
                                 "/bookstore/orders/{orderId}/view","/bookstore/orders/{orderId}/delete",
                                 "/bookstore/books/{bookId}/addToCart**","/bookstore/books/{bookId}/removeFromCart**",
                                 "/bookstore/books/cart/createCart","bookstore/orders/postOrder","bookstore/orders" +
-                                        "/postOrder/**","/bookstore/orders/user/{userId}/view","/bookstore/orders/{userId}/{orderId}/view"
+                                        "/postOrder/**","/bookstore/orders/user/{userId}/view","/bookstore/orders" +
+                                        "/{userId}/{orderId}/view","/bookstore/books/{bookId}/edit","/bookstore/books" +
+                                        "/{bookId}/saveBook"
                                 ).permitAll()
                         .requestMatchers("bookstore/users/{userID}/delete").permitAll()
 //                        .requestMatchers(HttpMethod.GET,"/bookstore/orders/**").hasRole("USER")

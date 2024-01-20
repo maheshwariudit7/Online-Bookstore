@@ -4,12 +4,14 @@ import com.OnlineBookstore.OnlineBookStore.Dto.BookDto;
 import com.OnlineBookstore.OnlineBookStore.entity.Book;
 import com.OnlineBookstore.OnlineBookStore.exception.BookNotFoundException;
 import com.OnlineBookstore.OnlineBookStore.service.BookService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -85,6 +87,27 @@ public class BookController {
         return "redirect:/bookstore/books/view";
 
         // here the "/bookstore/books/view" is a mapping url where the users will be redirected
+    }
+
+    @GetMapping("{bookId}/edit")
+    public String editBook(@PathVariable Long bookId,Model model) throws BookNotFoundException {
+        Optional<BookDto> book=bookService.findBookById(bookId);
+        model.addAttribute("book",book.get());
+        return "edit_book";
+    }
+
+    @PostMapping("{bookId}/saveBook")
+    public String saveBook(@PathVariable Long bookId,@Valid @ModelAttribute("book") Book book, BindingResult result,
+                           Model model,
+                           @AuthenticationPrincipal UserDetails userDetails){
+        if(result.hasErrors()){
+            model.addAttribute("book",book);
+            return "edit_book";
+        }
+        book.setId(bookId);
+        bookService.updateBook(book);
+
+        return "redirect:/bookstore/books/view";
     }
 
 }
