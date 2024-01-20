@@ -17,7 +17,7 @@
 * Dedicated admin panel
 * Admin can view, delete users and books
 
-![login](screenshots/login.png) ![Alt Text](screenshots/Books%20view.png)
+![login](screenshots/login.png) ![Alt Text](screenshots/Books%20View.png)
 ![Users](screenshots/Users%20View%20(2).png) ![Orders](screenshots/Orders%20view.png)
 ![Create user](screenshots/Create%20User%20View.png)
 ![signup](screenshots/Signup.png)
